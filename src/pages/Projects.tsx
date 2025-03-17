@@ -1,7 +1,19 @@
 import { motion } from 'framer-motion';
 import dassaultLogo from '../assets/Dassault Systèmes.jpg';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  sponsor?: {
+    name: string;
+    logo: string;
+  };
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'Real-Time Overloading Detection System for Wagons',
@@ -29,7 +41,7 @@ const projects = [
   },
 ];
 
-const Projects = () => {
+const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-12 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,6 +80,7 @@ const Projects = () => {
                   className="h-48 w-full object-cover" 
                   src={project.image} 
                   alt={project.title} 
+                  loading="lazy"
                 />
               </div>
               <div className="flex-1 p-6 flex flex-col justify-between">
@@ -86,6 +99,7 @@ const Projects = () => {
                           alt={project.sponsor.name} 
                           className="h-6" 
                           title={project.sponsor.name}
+                          loading="lazy"
                         />
                       </div>
                     )}
