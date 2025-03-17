@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
 import dassaultLogo from '../assets/Dassault Systèmes.jpg';
 
 const projects = [
@@ -31,21 +29,6 @@ const projects = [
 ];
 
 const Projects = () => {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
-
   return (
     <section id="projects" className="py-12 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
