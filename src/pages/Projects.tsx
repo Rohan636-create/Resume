@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import dassaultLogo from '../assets/Dassault Systèmes.jpg';
 
 const projects = [
@@ -32,20 +33,35 @@ const Projects = () => {
   return (
     <section id="projects" className="py-12 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-4">
             My Projects
           </h2>
+          <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
             Check out some of my recent work
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div 
-              key={project.id} 
-              className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white transition-all duration-300 hover:shadow-xl"
+        <motion.div 
+          className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {projects.map((project, index) => (
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+              className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-white/95 backdrop-blur-sm 
+                       transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
             >
               <div className="flex-shrink-0">
                 <img 
@@ -81,7 +97,8 @@ const Projects = () => {
                     {project.tags.map((tag) => (
                       <span 
                         key={tag} 
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-indigo-100 text-indigo-800"
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium 
+                                 bg-blue-50 text-blue-700 transition-all duration-300 hover:bg-blue-100"
                       >
                         {tag}
                       </span>
@@ -89,9 +106,9 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
